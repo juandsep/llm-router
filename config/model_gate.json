@@ -1,0 +1,5 @@
+{
+  "primary_metric": "roc_auc",
+  "minimum_acceptable": 0.7,
+  "_comment": "The training pipeline must clear minimum_acceptable to register a model. Raise it when the baseline improves; never lower it silently."
+}

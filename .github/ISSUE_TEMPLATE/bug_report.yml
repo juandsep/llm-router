@@ -1,0 +1,36 @@
+name: Bug report
+description: Something is broken or behaves differently than documented
+labels: ["type:bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Actual behavior, plus the exact error or output.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: Commands, input and environment (OS, Python version, commit SHA).
+      placeholder: |
+        1. git checkout <sha>
+        2. make bootstrap
+        3. make check
+        -> error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v0.1.0 / a1b2c3d
+    validations:
+      required: true

@@ -1,0 +1,41 @@
+# Data and model artifacts never enter git: they are fetched or produced.
+data/
+*.parquet
+*.csv
+!tests/fixtures/*.csv
+models/
+artifacts/
+mlruns/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Local run artifacts and Terraform local files (state lives in GCS).
+mlflow.db
+mlartifacts/
+graphify-out/
+infra/.terraform/
+infra/*.tfstate*
+infra/terraform.tfvars
+infra/tfplan
+monitoring/model/
+.claude/worktrees/

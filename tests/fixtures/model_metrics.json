@@ -1,0 +1,11 @@
+{
+  "_comment": "Fixture, not a real evaluation. Replaced by the training pipeline output.",
+  "model_version": "0.1.0",
+  "git_sha": "unknown",
+  "data_checksum": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "metrics": {
+    "roc_auc": 0.8,
+    "pr_auc": 0.42,
+    "brier": 0.11
+  }
+}

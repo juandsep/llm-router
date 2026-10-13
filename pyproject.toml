@@ -1,0 +1,55 @@
+[project]
+name = "llm-router"
+version = "0.1.0"
+description = "TODO: one line describing llm-router"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "jd", email = "juandsep@gmail.com" }]
+dependencies = ["numpy>=2.1"]
+
+[dependency-groups]
+dev = [
+  "detect-secrets>=1.5.0",
+  "mypy>=1.18",
+  "pip-audit>=2.9",
+  "pre-commit>=4.3",
+  "pytest>=8.4",
+  "pytest-cov>=7.0",
+  "ruff>=0.16",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.18,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.coverage.run]
+source = ["src/llm_router"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+# Single source of truth for the coverage floor: `make test` and CI both read it.
+# Measure the real coverage first, then set this below it. Never raise it blindly.
+fail_under = 80
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "raise NotImplementedError"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S"]  # S: bandit security rules
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]  # assert is how pytest checks
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+files = ["src"]
