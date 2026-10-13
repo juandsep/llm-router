@@ -1,4 +1,4 @@
-"""TODO: one line describing llm-router"""
+"""Prompt-difficulty router: Laya picks the tier, the gateway picks the model."""
 
 __version__ = "0.1.0"
 

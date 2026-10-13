@@ -1,12 +1,15 @@
 [project]
 name = "llm-router"
 version = "0.1.0"
-description = "TODO: one line describing llm-router"
+description = "Prompt-difficulty router: Laya picks easy/mid/hard, the gateway picks the model tier."
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
 authors = [{ name = "jd", email = "juandsep@gmail.com" }]
-dependencies = ["numpy>=2.1"]
+dependencies = [
+    "laya>=0.4.6",
+    "numpy>=2.1",
+]
 
 [dependency-groups]
 dev = [
@@ -48,6 +51,7 @@ select = ["E", "F", "I", "UP", "B", "S"]  # S: bandit security rules
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101"]  # assert is how pytest checks
+"scripts/**" = ["E501", "S101"]  # one-off scripts: prompt data lines, assert self-checks
 
 [tool.mypy]
 python_version = "3.12"
