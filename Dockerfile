@@ -1,6 +1,6 @@
 # Multi-stage build. Base images pinned by digest: a moved tag cannot change what runs.
 # Dependabot (docker ecosystem) opens PRs to bump both digests.
-FROM python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f AS builder
+FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928 AS builder
 
 COPY --from=ghcr.io/astral-sh/uv:0.12.18@sha256:3adc3706091ce7c2fe595e669628caedd6d951551b92b258b7e7dbe06d9440bc /uv /bin/uv
 ENV UV_COMPILE_BYTECODE=1 \
@@ -16,7 +16,7 @@ COPY src ./src
 RUN uv sync --frozen --no-dev
 
 
-FROM python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f AS runtime
+FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928 AS runtime
 
 RUN useradd --create-home --uid 10001 app
 WORKDIR /app
